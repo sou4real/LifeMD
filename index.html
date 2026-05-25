@@ -1,512 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LifeMD | Telehealth & Wellness</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LifeMD | Telehealth Services</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#050505;
-  --dark:#070707;
-  --panel:#0a0a0a;
-  --red:#c8102e;
-  --red2:#99001d;
-  --gold:#c7a061;
-  --pink:#f3a9bd;
-  --muted:#b8b8b8;
-  --line:#222;
-}
-body{
-  background:var(--black);
-  color:white;
-  font-family:Arial,sans-serif;
-}
-a{text-decoration:none;color:inherit}
-header{
-  height:78px;
-  background:#070707;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 24px;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.logo{
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:7px;
-  text-transform:uppercase;
-}
-.logo span{color:var(--red)}
-.icon{font-size:28px;cursor:pointer}
-.hero{
-  min-height:720px;
-  padding:130px 45px 55px;
-  background:linear-gradient(90deg,rgba(0,0,0,.25),#070707 72%),url('hero.jpg') left center/cover no-repeat;
-}
-.label{
-  color:var(--gold);
-  letter-spacing:10px;
-  text-transform:uppercase;
-  font-size:15px;
-  margin-bottom:45px;
-}
-.label:before{
-  content:"";
-  display:inline-block;
-  width:60px;
-  height:1px;
-  background:var(--gold);
-  margin-right:15px;
-  vertical-align:middle;
-}
-h1,h2{
-  font-family:Impact,Arial Black,sans-serif;
-  text-transform:uppercase;
-  line-height:.95;
-  font-weight:400;
-}
-h1{font-size:72px}
-h2{font-size:58px}
-.red{color:var(--red)}
-.script{
-  font-family:Georgia,serif;
-  font-style:italic;
-  color:var(--pink);
-  text-transform:none;
-}
-.hero p,.section p{
-  color:var(--muted);
-  font-size:27px;
-  line-height:1.6;
-  margin-top:42px;
-}
-.hero em{color:var(--pink);font-family:Georgia,serif}
-.btn{
-  display:block;
-  width:100%;
-  text-align:center;
-  padding:28px 18px;
-  margin-top:28px;
-  background:linear-gradient(90deg,#cf102e,#99001d);
-  color:white;
-  text-transform:uppercase;
-  letter-spacing:8px;
-  font-weight:900;
-  border:none;
-  cursor:pointer;
-}
-.btn.outline{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.35);
-}
-.btn.gold{
-  background:transparent;
-  border:1px solid #8d6936;
-  color:var(--gold);
-}
-.rating{
-  margin-top:72px;
-  color:#aaa;
-  letter-spacing:8px;
-}
-.scroll{
-  text-align:center;
-  color:#777;
-  letter-spacing:12px;
-  margin-top:78px;
-}
-.marquee{
-  background:#101010;
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
-  padding:38px 0;
-  white-space:nowrap;
-  overflow:hidden;
-  font-size:36px;
-  font-weight:900;
-  letter-spacing:10px;
-  color:#d5d5d5;
-}
-.marquee span{color:#c8102e;padding:0 25px}
-.section{
-  background:#070707;
-  padding:72px 45px;
-}
-.section.dark{background:#050505}
-.section.glow{
-  background:radial-gradient(circle at 50% 20%,rgba(130,0,30,.25),transparent 40%),#070707;
-}
-.number{
-  color:var(--gold);
-  letter-spacing:10px;
-  text-transform:uppercase;
-  margin-bottom:45px;
-  font-size:15px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:26px;
-  margin-top:64px;
-}
-.card{
-  height:292px;
-  background-size:cover;
-  background-position:center;
-  position:relative;
-  padding:28px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.05);
-}
-.card:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.93),rgba(0,0,0,.12));
-}
-.card>*{position:relative;z-index:1}
-.tag{
-  position:absolute;
-  top:28px;
-  left:28px;
-  background:rgba(0,0,0,.75);
-  border:1px solid rgba(255,255,255,.18);
-  padding:14px 18px;
-  color:#ddd;
-  letter-spacing:6px;
-  font-size:14px;
-  text-transform:uppercase;
-}
-.card h3{
-  font-size:38px;
-  line-height:.95;
-  text-transform:uppercase;
-}
-.pieces{
-  margin-top:12px;
-  color:#ccc;
-  letter-spacing:6px;
-  font-size:19px;
-  text-transform:uppercase;
-}
-.product{
-  background:#070707;
-}
-.product img{
-  width:100%;
-  height:292px;
-  object-fit:cover;
-  background:#111;
-  margin-bottom:24px;
-}
-.product-title{
-  font-size:27px;
-  line-height:1.15;
-  text-transform:uppercase;
-  font-weight:900;
-}
-.price{
-  float:right;
-  color:#d2a158;
-  font-weight:900;
-  font-size:28px;
-}
-.stars{
-  margin-top:17px;
-  color:#aaa;
-  letter-spacing:4px;
-}
-.checks{
-  display:grid;
-  gap:27px;
-  margin-top:50px;
-}
-.check{
-  font-size:24px;
-}
-.check span{
-  background:#25060d;
-  color:var(--red);
-  border-radius:50%;
-  padding:10px 14px;
-  margin-right:17px;
-  font-weight:900;
-}
-.features{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  border-top:1px solid #222;
-  margin-top:50px;
-  padding-top:50px;
-}
-.feature{
-  display:grid;
-  grid-template-columns:78px 1fr;
-  gap:20px;
-}
-.circle{
-  width:72px;
-  height:72px;
-  border:1px solid #252525;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:31px;
-  background:#080808;
-}
-.feature h3{
-  font-size:34px;
-  line-height:1.05;
-  text-transform:uppercase;
-}
-.feature p{
-  margin-top:14px;
-  font-size:22px;
-  line-height:1.28;
-  color:#aaa;
-}
-.email{
-  text-align:center;
-  background:linear-gradient(#080808,#150609);
-}
-.email input{
-  width:100%;
-  background:#080808;
-  color:white;
-  border:1px solid #242424;
-  padding:25px;
-  font-size:22px;
-  margin-top:35px;
-}
-footer{
-  padding:45px 28px;
-  text-align:center;
-  border-top:1px solid #222;
-  color:#777;
-  letter-spacing:7px;
-  font-size:14px;
-}
-@media(max-width:520px){
-  header{padding:0 20px}
-  .logo{font-size:27px;letter-spacing:5px}
-  .hero{padding:125px 32px 50px}
-  h1{font-size:61px}
-  h2{font-size:50px}
-  .hero p,.section p{font-size:24px}
-  .section{padding:64px 32px}
-  .grid{gap:22px}
-  .card{height:280px}
-  .product img{height:280px}
-  .features{gap:40px}
-  .feature{grid-template-columns:1fr}
-}
-</style>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-<!-- Shopify Buy Button SDK (for the homepage) -->
-<script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+    :root{
+      --bg:#07111f;
+      --card:#101c2c;
+      --card-light:#16263a;
+      --primary:#3b82f6;
+      --primary-hover:#2563eb;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 12px 30px rgba(0,0,0,0.35);
+      --radius:20px;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(to bottom,#07111f,#0d1726);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section{
+      padding:90px 0;
+    }
+
+    h1,h2,h3{
+      margin-bottom:15px;
+    }
+
+    p{
+      color:var(--muted);
+    }
+
+    .btn{
+      background:var(--primary);
+      color:white;
+      border:none;
+      padding:14px 24px;
+      border-radius:14px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      text-decoration:none;
+      display:inline-block;
+      box-shadow:0 0 20px rgba(59,130,246,0.3);
+    }
+
+    .btn:hover{
+      background:var(--primary-hover);
+      transform:translateY(-2px);
+    }
+
+    /* NAVIGATION */
+    .navbar{
+      background:rgba(7,17,31,0.95);
+      backdrop-filter:blur(10px);
+      padding:20px 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .logo{
+      font-size:1.8rem;
+      font-weight:bold;
+    }
+
+    .logo span{
+      color:var(--primary);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:var(--text);
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    /* HERO */
+    .hero{
+      min-height:80vh;
+      display:flex;
+      align-items:center;
+      background:radial-gradient(circle at top right, rgba(59,130,246,0.15), transparent 30%),
+                  linear-gradient(to bottom right,#07111f,#0d1726);
+    }
+
+    .hero-content{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:280px;
+    }
+
+    .hero-text h1{
+      font-size:3.5rem;
+      line-height:1.2;
+    }
+
+    .hero-text span{
+      color:var(--primary);
+    }
+
+    .hero-text p{
+      margin:25px 0;
+      font-size:1.1rem;
+    }
+
+    .hero-card{
+      flex:1;
+      min-width:280px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      backdrop-filter:blur(10px);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card img{
+      width:100%;
+      border-radius:16px;
+      height:300px;
+      object-fit:cover;
+    }
+
+    /* SECTION TITLES */
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:2.4rem;
+    }
+
+    /* HOW IT WORKS */
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .step{
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:35px;
+      border-radius:var(--radius);
+      text-align:center;
+      transition:0.3s;
+      box-shadow:var(--shadow);
+    }
+
+    .step:hover{
+      transform:translateY(-5px);
+    }
+
+    .step-number{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:var(--primary);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:auto auto 20px;
+      font-size:1.3rem;
+      font-weight:bold;
+    }
+
+    /* PRODUCTS */
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .product-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:0.3s;
+      box-shadow:var(--shadow);
+    }
+
+    .product-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .product-image{
+      height:220px;
+      background:#132033;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .product-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .product-content{
+      padding:25px;
+    }
+
+    .price{
+      color:#60a5fa;
+      font-size:1.2rem;
+      font-weight:bold;
+      margin:15px 0;
+    }
+
+    /* CART (same as before) */
+    .cart{
+      position:fixed;
+      top:90px;
+      right:20px;
+      width:320px;
+      background:rgba(16,28,44,0.95);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:25px;
+      z-index:999;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .cart h3{
+      margin-bottom:20px;
+    }
+
+    .cart-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+      gap:10px;
+    }
+
+    .cart-controls{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .qty-btn{
+      width:28px;
+      height:28px;
+      border:none;
+      border-radius:8px;
+      background:var(--primary);
+      color:white;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .total{
+      margin-top:20px;
+      font-size:1.2rem;
+      font-weight:bold;
+    }
+
+    /* BOOKING FORM */
+    .booking-form{
+      max-width:750px;
+      margin:auto;
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:40px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .form-group{
+      margin-bottom:20px;
+    }
+
+    input,textarea{
+      width:100%;
+      background:#0f1b2d;
+      border:1px solid var(--border);
+      color:white;
+      padding:16px;
+      border-radius:14px;
+      font-size:1rem;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:140px;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#050b14;
+      padding:50px 0;
+      text-align:center;
+      border-top:1px solid var(--border);
+    }
+
+    footer p{
+      margin-top:10px;
+    }
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .hero-text h1{
+        font-size:2.5rem;
+      }
+      .cart{
+        position:relative;
+        width:100%;
+        right:auto;
+        top:auto;
+        margin:20px auto;
+      }
+      .hero-content{
+        flex-direction:column;
+      }
+      .nav-container{
+        flex-direction:column;
+      }
+    }
+  </style>
+
+  <!-- Shopify Buy Button SDK -->
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
 </head>
 <body>
 
-<header>
-<div class="icon">☰</div>
-<div class="logo">Life<span>MD</span></div>
-<div class="icon">⌕ 🛍</div>
-</header>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">Life<span>MD</span></div>
+      <div class="nav-links">
+        <a href="index.html" style="color:var(--primary);">Home</a>
+        <a href="products.html">Products</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="#booking">Consult</a>
+      </div>
+    </div>
+  </nav>
 
-<section class="hero">
-<div class="label">Telehealth & Wellness</div>
-<h1>Stay Ready.<br><span class="red">Stay Healthy.</span></h1>
-<p>Professional medical consultations, compounded medications, and wellness essentials from the comfort of home.</p>
-<a href="#products" class="btn">Shop Now</a>
-<a href="#booking" class="btn outline">Book Consultation</a>
-<div class="rating">★★★★★ 4.9</div>
-<div class="scroll">SCROLL</div>
-</section>
+  <!-- HERO SECTION (unchanged) -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Welcome to <span>LifeMD</span></h1>
+        <p>Modern telehealth consultations and wellness support from licensed healthcare professionals — all from the comfort of your home.</p>
+        <a href="#booking" class="btn">Book Consultation</a>
+      </div>
+      <div class="hero-card">
+        <img src="images/hero-placeholder.jpg" alt="Telehealth products" onerror="this.src='https://placehold.co/600x400?text=Telehealth'">
+      </div>
+    </div>
+  </section>
 
-<div class="marquee">COMPOUNDED TIRZEPATIDE · GLP-1 THERAPY · WEIGHT MANAGEMENT · RX REQUIRED <span>✦</span></div>
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>How It Works</h2>
+        <p>Simple online healthcare in 3 easy steps.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Consult Online</h3>
+          <p>Connect securely with healthcare professionals from anywhere.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Review Products</h3>
+          <p>Receive personalized wellness and health product suggestions.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Place Order</h3>
+          <p>Add products to your order and submit instantly online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-<div class="number">01 — Collections</div>
-<h2>Shop By <span class="script">Category</span></h2>
-<p>From prescriptions to everyday wellness — every product curated for your health journey.</p>
-<div class="grid">
-<a class="card" href="products.html" style="background-image:url('images/tirzepatide.jpg')"><div class="tag">Compounded</div><h3>Tirzepatide</h3><div class="pieces">GLP-1 Therapy ↗</div></a>
-<a class="card" href="products.html" style="background-image:url('images/vitamins.jpg')"><div class="tag">Essential</div><h3>Vitamins</h3><div class="pieces">Immune Support ↗</div></a>
-<a class="card" href="products.html" style="background-image:url('images/monitor.jpg')"><div class="tag">Devices</div><h3>Monitoring</h3><div class="pieces">BP & Pulse ↗</div></a>
-<a class="card" href="products.html" style="background-image:url('images/tea.jpg')"><div class="tag">Wellness</div><h3>Stress Relief</h3><div class="pieces">Tea & Gummies ↗</div></a>
-</div>
-</section>
+  <!-- FEATURED PRODUCTS (with Tirzepatide replacing vitamins) -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+        <p>Recommended wellness essentials for your care journey.</p>
+      </div>
+      <div class="products-grid">
+        <!-- Tirzepatide card (replaces Immune Support Vitamins) -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/tirzepatide.png" alt="Compounded Tirzepatide" onerror="this.src='https://placehold.co/300x220?text=Tirzepatide'">
+          </div>
+          <div class="product-content">
+            <div class="badge" style="display:inline-block; background:#22c55e; font-size:0.7rem; padding:4px 10px; border-radius:20px; margin-bottom:10px;">Rx Required</div>
+            <h3>Compounded Tirzepatide</h3>
+            <p>GLP-1/GIP therapy for weight management & metabolic support.</p>
+            <div class="price">Starting at $199</div>
+            <!-- Shopify Buy Button container for homepage -->
+            <div id='product-component-homepage' style="margin-top: 20px;"></div>
+          </div>
+        </div>
 
-<section class="section dark" id="products">
-<div class="number">02 — Featured</div>
-<h2>Our <span class="script">Top Picks</span></h2>
-<a href="products.html" class="btn gold">View All Products</a>
+        <!-- Other products unchanged -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/bpmonitor.jpg" alt="Blood Pressure Monitor" onerror="this.src='https://placehold.co/300x220?text=BP+Monitor'">
+          </div>
+          <div class="product-content">
+            <div class="badge" style="display:inline-block; background:#22c55e; font-size:0.7rem; padding:4px 10px; border-radius:20px; margin-bottom:10px;">Doctor Recommended</div>
+            <h3>Blood Pressure Monitor</h3>
+            <p>Easy-to-use digital monitor for at-home tracking.</p>
+            <div class="price">$59.99</div>
+            <button class="btn" onclick="addToCart('Blood Pressure Monitor',59.99)">Add to Order</button>
+          </div>
+        </div>
 
-<div class="grid">
-  <!-- TIRZEPATIDE CARD (with Shopify buy button) - replaces vitamins -->
-  <div class="product">
-    <img src="images/tirzepatide.png" alt="Compounded Tirzepatide">
-    <div class="product-title">Compounded Tirzepatide <span class="price">$199+</span></div>
-    <div class="stars">★★★★★ (247)</div>
-    <!-- Shopify Buy Button container (same as on products.html) -->
-    <div id='product-component-homepage' style="margin-top: 20px;"></div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/gummies.jpg" alt="Sleep Wellness Gummies" onerror="this.src='https://placehold.co/300x220?text=Gummies'">
+          </div>
+          <div class="product-content">
+            <div class="badge" style="display:inline-block; background:#22c55e; font-size:0.7rem; padding:4px 10px; border-radius:20px; margin-bottom:10px;">New</div>
+            <h3>Sleep Wellness Gummies</h3>
+            <p>Natural sleep support for healthier nightly rest.</p>
+            <div class="price">$18.50</div>
+            <button class="btn" onclick="addToCart('Sleep Wellness Gummies',18.50)">Add to Order</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="products.html" class="btn">View All Products →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart">
+    <h3>🛒 Order Summary</h3>
+    <div id="cart-items"></div>
+    <div class="total">Total: $<span id="cart-total">0.00</span></div>
+    <a href="checkout.html" class="btn" style="width:100%; margin-top:20px; text-align:center;">Proceed to Checkout</a>
   </div>
 
-  <!-- Other products unchanged -->
-  <a class="product" href="products.html">
-    <img src="images/bpmonitor.jpg" alt="Blood Pressure Monitor">
-    <div class="product-title">Blood Pressure Monitor <span class="price">$59</span></div>
-    <div class="stars">★★★★★ (124)</div>
-  </a>
+  <!-- BOOKING SECTION -->
+  <section id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Request a Consultation</h2>
+        <p>Schedule your secure telehealth appointment online.</p>
+      </div>
+      <form class="booking-form" id="consultationForm">
+        <div class="form-group">
+          <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Brief reason for consultation..." required></textarea>
+        </div>
+        <button type="submit" class="btn">Request Appointment</button>
+      </form>
+    </div>
+  </section>
 
-  <a class="product" href="products.html">
-    <img src="images/gummies.jpg" alt="Sleep Wellness Gummies">
-    <div class="product-title">Sleep Wellness Gummies <span class="price">$18</span></div>
-    <div class="stars">★★★★★ (124)</div>
-  </a>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <h3>LifeMD</h3>
+      <p>Email: support@lifemd.com</p>
+      <p>Phone: (000) 000-0000</p>
+      <p style="margin-top:20px; font-size:0.8rem;">Disclaimer: This service is not intended for emergency care. If you are experiencing a medical emergency, call emergency services immediately.</p>
+    </div>
+  </footer>
 
-  <a class="product" href="products.html">
-    <img src="images/thermometer.jpg" alt="Digital Thermometer">
-    <div class="product-title">Digital Thermometer <span class="price">$22</span></div>
-    <div class="stars">★★★★★ (124)</div>
-  </a>
-</div>
-</section>
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-<section class="section glow">
-<div class="number">03 — Compounded Tirzepatide</div>
-<h2>Personalized<br><span class="script">Weight Management</span></h2>
-<p>Custom GLP‑1/GIP therapy prepared by a licensed pharmacy. Supports blood sugar & weight loss. Once‑weekly injection. Must be prescribed by a healthcare provider.</p>
-<div class="checks">
-<div class="check"><span>✓</span> Prescription required – online consult available</div>
-<div class="check"><span>✓</span> Custom dosages (20mg, 30mg, 40mg)</div>
-<div class="check"><span>✓</span> Shipped discreetly to your door</div>
-</div>
-<a href="products.html" class="btn">Learn More</a>
-</section>
+    function addToCart(name, price){
+      const existing = cart.find(item => item.name === name);
+      if(existing){
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity:1 });
+      }
+      saveCart();
+      renderCart();
+    }
 
-<section class="section features">
-<div class="feature"><div class="circle">🔒</div><div><h3>Secure<br>Checkout</h3><p>256-bit SSL · No data sold</p></div></div>
-<div class="feature"><div class="circle">📦</div><div><h3>Discreet<br>Shipping</h3><p>Plain packaging, always</p></div></div>
-<div class="feature"><div class="circle">🚚</div><div><h3>Fast<br>Fulfillment</h3><p>Ships within 48 hours</p></div></div>
-<div class="feature"><div class="circle">✨</div><div><h3>Doctor<br>Reviewed</h3><p>Licensed physicians</p></div></div>
-</section>
+    function changeQty(name, amount){
+      const item = cart.find(item => item.name === name);
+      if(!item) return;
+      item.quantity += amount;
+      if(item.quantity <= 0){
+        cart = cart.filter(i => i.name !== name);
+      }
+      saveCart();
+      renderCart();
+    }
 
-<section class="section email" id="booking">
-<div class="number">The List</div>
-<h2>Get On The <span class="script">Inside</span></h2>
-<p>Early access to new treatments, restocks, and 10% off your first order.</p>
-<input type="email" placeholder="your@email.com">
-<a href="#" class="btn">🔒 Secure My Spot</a>
-</section>
+    function saveCart(){
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
-<footer>LifeMD · TELEHEALTH · WELLNESS · STAY READY</footer>
+    function renderCart(){
+      const cartItems = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+      if(!cartItems) return;
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <div><strong>${item.name}</strong><br>$${item.price.toFixed(2)}</div>
+          <div class="cart-controls">
+            <button class="qty-btn" onclick="changeQty('${item.name}',-1)">-</button>
+            <span>${item.quantity}</span>
+            <button class="qty-btn" onclick="changeQty('${item.name}',1)">+</button>
+          </div>
+        `;
+        cartItems.appendChild(div);
+      });
+      cartTotal.textContent = total.toFixed(2);
+    }
 
-<!-- Shopify Buy Button initialization script (same product as products.html) -->
-<script>
-  (function () {
-    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    if (window.ShopifyBuy) {
-      if (window.ShopifyBuy.UI) {
+    document.getElementById("consultationForm")?.addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Consultation request submitted successfully!");
+      this.reset();
+    });
+
+    renderCart();
+
+    // Shopify Buy Button initialization (same as products.html)
+    (function () {
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'g2n1rr-if.myshopify.com',
+          storefrontAccessToken: '192dc071083db776b6bccca4cc54f455',
+        });
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: '7928589877291',
+            node: document.getElementById('product-component-homepage'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+              "product": {
+                "styles": {
+                  "product": {
+                    "@media (min-width: 601px)": {
+                      "max-width": "100%",
+                      "margin-left": "0px",
+                      "margin-bottom": "0px"
+                    }
+                  },
+                  "button": {
+                    "font-family": "Candara, sans-serif",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    "background-color": "#57b6aa",
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                },
+                "buttonDestination": "modal",
+                "contents": {
+                  "options": false
+                },
+                "text": {
+                  "button": "View product"
+                }
+              },
+              "modalProduct": {
+                "contents": {
+                  "img": false,
+                  "imgWithCarousel": true,
+                  "button": false,
+                  "buttonWithQuantity": true
+                },
+                "styles": {
+                  "product": {
+                    "@media (min-width: 601px)": {
+                      "max-width": "100%",
+                      "margin-left": "0px",
+                      "margin-bottom": "0px"
+                    }
+                  },
+                  "button": {
+                    "font-family": "Candara, sans-serif",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    "background-color": "#57b6aa",
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                },
+                "text": {
+                  "button": "Add to cart"
+                }
+              }
+            }
+          });
+        });
+      }
+      if (window.ShopifyBuy && window.ShopifyBuy.UI) {
         ShopifyBuyInit();
       } else {
         loadScript();
       }
-    } else {
-      loadScript();
-    }
-    function loadScript() {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = scriptURL;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-      script.onload = ShopifyBuyInit;
-    }
-    function ShopifyBuyInit() {
-      var client = ShopifyBuy.buildClient({
-        domain: 'g2n1rr-if.myshopify.com',
-        storefrontAccessToken: '192dc071083db776b6bccca4cc54f455',
-      });
-      ShopifyBuy.UI.onReady(client).then(function (ui) {
-        ui.createComponent('product', {
-          id: '7928589877291',
-          node: document.getElementById('product-component-homepage'),
-          moneyFormat: '%24%7B%7Bamount%7D%7D',
-          options: {
-            "product": {
-              "styles": {
-                "product": {
-                  "@media (min-width: 601px)": {
-                    "max-width": "100%",
-                    "margin-left": "0px",
-                    "margin-bottom": "0px"
-                  }
-                },
-                "button": {
-                  "font-family": "Candara, sans-serif",
-                  ":hover": {
-                    "background-color": "#4ea499"
-                  },
-                  "background-color": "#57b6aa",
-                  ":focus": {
-                    "background-color": "#4ea499"
-                  }
-                }
-              },
-              "buttonDestination": "modal",
-              "contents": {
-                "options": false
-              },
-              "text": {
-                "button": "View product"
-              }
-            },
-            "modalProduct": {
-              "contents": {
-                "img": false,
-                "imgWithCarousel": true,
-                "button": false,
-                "buttonWithQuantity": true
-              },
-              "styles": {
-                "product": {
-                  "@media (min-width: 601px)": {
-                    "max-width": "100%",
-                    "margin-left": "0px",
-                    "margin-bottom": "0px"
-                  }
-                },
-                "button": {
-                  "font-family": "Candara, sans-serif",
-                  ":hover": {
-                    "background-color": "#4ea499"
-                  },
-                  "background-color": "#57b6aa",
-                  ":focus": {
-                    "background-color": "#4ea499"
-                  }
-                }
-              },
-              "text": {
-                "button": "Add to cart"
-              }
-            }
-          }
-        });
-      });
-    }
-  })();
-</script>
-
+    })();
+  </script>
 </body>
 </html>
