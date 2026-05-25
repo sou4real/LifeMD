@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -292,10 +292,34 @@
         <p>Browse our wellness essentials recommended by telehealth professionals</p>
       </div>
 
+      <!-- DYNAMIC PRODUCTS (using your cart system) -->
       <div class="products-grid" id="productsGrid"></div>
+
+      <!-- SEPARATE SECTION FOR COMPOUNDED TIRZEPATIDE (Shopify Buy Button) -->
+      <div style="margin-top: 60px;">
+        <div class="section-title">
+          <h2>Compounded Tirzepatide</h2>
+          <p>Prescription weight management & metabolic support</p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <img src="images/tirzepatide.png" alt="Compounded Tirzepatide" onerror="this.src='https://placehold.co/300x220?text=Tirzepatide'">
+            </div>
+            <div class="product-content">
+              <div class="badge">Rx Required</div>
+              <h3>Compounded Tirzepatide</h3>
+              <p>Custom GLP‑1/GIP therapy prepared by a licensed pharmacy. Supports blood sugar & weight management. Once‑weekly injection. <strong>Must be prescribed by a healthcare provider.</strong></p>
+              <!-- Shopify Buy Button container -->
+              <div id='product-component-1779672010600' style="margin-top: 20px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- YOUR CART SIDEBAR (for non-Tirzepatide products) -->
   <div class="cart">
     <h3>🛒 Order Summary</h3>
     <div id="cart-items"></div>
@@ -312,16 +336,14 @@
   </footer>
 
   <script>
+    // YOUR EXISTING PRODUCTS (excluding Tirzepatide – only non‑Rx items)
     const products = [
       { id:1, name:"Immune Support Vitamins", price:24.99, category:"Vitamins", badge:"Best Seller", image:"images/vitamins.jpg" },
       { id:2, name:"Blood Pressure Monitor", price:59.99, category:"Devices", badge:"Doctor Recommended", image:"images/bpmonitor.jpg" },
       { id:3, name:"Sleep Wellness Gummies", price:18.50, category:"Supplements", badge:"New", image:"images/gummies.jpg" },
       { id:4, name:"Digital Thermometer", price:22.99, category:"Devices", image:"images/thermometer.jpg" },
       { id:5, name:"Stress Relief Tea", price:14.99, category:"Wellness", badge:"Organic", image:"images/tea.jpg" },
-      { id:6, name:"Pulse Oximeter", price:29.99, category:"Devices", badge:"Essential", image:"images/pulseox.jpg" },
-      { id:7, name:"Tirzepatide 30mg/3mL", price:199.99, category:"Prescription", badge:"Rx Required", image:"images/tirzepatide.png" }
-      { id:7, name:"Tirzepatide 20mg/4mL", price:99.99, category:"Prescription", badge:"Rx Required", image:"images/tirzepatide.png" }
-      { id:7, name:"Tirzepatide 40mg/4mL", price:299.99, category:"Prescription", badge:"Rx Required", image:"images/tirzepatide.png" }  
+      { id:6, name:"Pulse Oximeter", price:29.99, category:"Devices", badge:"Essential", image:"images/pulseox.jpg" }
     ];
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -396,6 +418,147 @@
 
     renderProducts();
     renderCart();
+  </script>
+
+  <!-- SHOPIFY BUY BUTTON SCRIPT (for Tirzepatide only) -->
+  <div id='product-component-1779672010600' style="display:none;"></div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'g2n1rr-if.myshopify.com',
+          storefrontAccessToken: '192dc071083db776b6bccca4cc54f455',
+        });
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: '7928589877291',
+            node: document.getElementById('product-component-1779672010600'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+              "product": {
+                "styles": {
+                  "product": {
+                    "@media (min-width: 601px)": {
+                      "max-width": "calc(25% - 20px)",
+                      "margin-left": "20px",
+                      "margin-bottom": "50px"
+                    }
+                  },
+                  "button": {
+                    "font-family": "Candara, sans-serif",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    "background-color": "#57b6aa",
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                },
+                "buttonDestination": "modal",
+                "contents": {
+                  "options": false
+                },
+                "text": {
+                  "button": "View product"
+                }
+              },
+              "productSet": {
+                "styles": {
+                  "products": {
+                    "@media (min-width: 601px)": {
+                      "margin-left": "-20px"
+                    }
+                  }
+                }
+              },
+              "modalProduct": {
+                "contents": {
+                  "img": false,
+                  "imgWithCarousel": true,
+                  "button": false,
+                  "buttonWithQuantity": true
+                },
+                "styles": {
+                  "product": {
+                    "@media (min-width: 601px)": {
+                      "max-width": "100%",
+                      "margin-left": "0px",
+                      "margin-bottom": "0px"
+                    }
+                  },
+                  "button": {
+                    "font-family": "Candara, sans-serif",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    "background-color": "#57b6aa",
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                },
+                "text": {
+                  "button": "Add to cart"
+                }
+              },
+              "option": {},
+              "cart": {
+                "styles": {
+                  "button": {
+                    "font-family": "Candara, sans-serif",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    "background-color": "#57b6aa",
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                },
+                "text": {
+                  "total": "Subtotal",
+                  "button": "Checkout"
+                }
+              },
+              "toggle": {
+                "styles": {
+                  "toggle": {
+                    "font-family": "Candara, sans-serif",
+                    "background-color": "#57b6aa",
+                    ":hover": {
+                      "background-color": "#4ea499"
+                    },
+                    ":focus": {
+                      "background-color": "#4ea499"
+                    }
+                  }
+                }
+              }
+            },
+          });
+        });
+      }
+    })();
+    /*]]>*/
   </script>
 </body>
 </html>
